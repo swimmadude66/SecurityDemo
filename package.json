@@ -1,0 +1,28 @@
+{
+  "name": "securitydemo",
+  "version": "1.0.0",
+  "description": "a weak app for testing purposes",
+  "main": "app.ts",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "mysql": "^2.11.1"
+  },
+  "devDependencies": {
+    "typings": "^1.4.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swimmadude66/SecurityDemo.git"
+  },
+  "author": "ayost",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/swimmadude66/SecurityDemo/issues"
+  },
+  "homepage": "https://github.com/swimmadude66/SecurityDemo#readme"
+}
