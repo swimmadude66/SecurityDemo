@@ -1,7 +1,6 @@
 const express     = require('express');
 const bodyParser  = require('body-parser');
 const morgan      = require('morgan');
-const mysql       = require('mysql');
 
 let port = 3000;
 

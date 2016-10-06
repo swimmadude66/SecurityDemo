@@ -1,14 +1,38 @@
 const authRouter = require('express').Router();
-const db = require('../middleware/db');
+const authDB = require('../middleware/db');
+
+function doLogin(username, password, callback){
+  authDB.query('Select * from `users` where `Username` = \'' + username +'\';', (err, results) => {
+    if(err) {
+      return callback('Error checking login');
+    } else {
+      if(results.length < 1) {
+        return callback('Invalid username');
+      } else {
+        if(results[0].Password === password) {
+          return callback(null, {UserId: results[0].UserId});
+        } else {
+          return callback('Invalid password');
+        }
+      }
+    }
+  });
+}
 
 authRouter.post('/signup', (req, res, next) => {
   let body = req.body;
   if (body.Username && body.Password) {
-    db.query('Insert into Users (Username, Password) VALUES(' + body.Username +', ' + body.Password+');', (err, result) => {
+    authDB.query('Insert into `users` (`Username`, `Password`) VALUES(\'' + body.Username +'\', \'' + body.Password+'\');', (err, result) => {
       if(err) {
         return res.status(400).send('Error signing up');
       } else {
-        return res.redirect('/api/auth/login');
+        doLogin(body.Username, body.Password, (err, userId) =>{
+          if(err){
+            return res.status(400).send(err);
+          } else {
+            return res.status(200).send(userId);
+          }
+        });
       }
     });
   }
@@ -17,22 +41,16 @@ authRouter.post('/signup', (req, res, next) => {
 authRouter.post('/login', (req, res, next) => {
   let body = req.body;
   if (body.Username && body.Password) {
-    db.query('Select * from Users where Username = ' + body.Username +';', (err, results) => {
-      if(err) {
-        return res.status(400).send('Error checking login');
+    doLogin(body.Username, body.Password, (err, userId) =>{
+      if(err){
+        return res.status(400).send(err);
       } else {
-        if(results.length < 1) {
-          return res.status(400).send('Invalid username');
-        } else {
-          if(results[0].Password === req.body.Password) {
-            return res.status(200).send({UserId: results[0].Id});
-          } else {
-            return res.status(400).send('Invalid password');
-          }
-        }
+        return res.status(200).send(userId);
       }
     });
+  } else {
+    return res.stats(400).send('username and password are required');
   }
 });
 
-module.exports = router;
+module.exports = authRouter;

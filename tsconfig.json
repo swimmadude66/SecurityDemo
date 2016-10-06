@@ -13,12 +13,11 @@
         "removeComments": true,
         "noLib": false,
         "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true
+        "suppressImplicitAnyIndexErrors": true,
+        "outDir": "dist"
     },
     "exclude": [
-        "node_modules",
-        "typings/browser",
-        "typings/browser.d.ts"
+        "node_modules"
     ],
     "compileOnSave": false,
     "buildOnSave": false,
