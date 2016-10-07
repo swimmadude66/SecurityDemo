@@ -1,5 +1,7 @@
 Create Database IF NOT EXISTS securitydemo;
 
+USE `securitydemo`;
+
 CREATE TABLE IF NOT EXISTS `users` (
   `UserId` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `Username` varchar(25) DEFAULT NULL,

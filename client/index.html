@@ -18,9 +18,17 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- AngularJS -->
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="index.js"></script>
   </head>
-  <body ng-controller="PageController" ng-cloak>
-    <div class="container auth" ng-if="!isLoggedIn()">
+  <body ng-controller="PageController">
+    <div class="container auth" ng-if="!isLoggedIn()" ng-cloak>
       <div class="row">
         <div class="col-xs-12">
           <h1 class="text-center">Login/Signup</h1>
@@ -51,7 +59,7 @@
         </div>
       </div>
     </div>
-    <div class="container feed" ng-if="isLoggedIn()">
+    <div class="container feed" ng-if="isLoggedIn()" ng-cloak>
       <div class="row new-post">
         <div class="col-xs-12">
           <div class="input-group">
@@ -114,15 +122,5 @@
         </div>
       </div>
     </div>
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="lib/jquery/dist/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- AngularJS -->
-    <script src="lib/angular/angular.min.js"></script>
-    <script src="lib/angular-toastr/dist/angular-toastr.tpls.js"></script>
-    <script src="index.js"></script>
   </body>
 </html>
