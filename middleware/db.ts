@@ -1,6 +1,14 @@
 const mysql = require('mysql');
 
-const pool = mysql.createPool({host:'localhost', database:'securitydemo', user:'root',  password: process.env.MYSQL_PASS || 'admin'});
+const pool = mysql.createPool(
+	{
+		host:'localhost', 
+		database:'securitydemo', 
+		user:'root',  
+		password: process.env.MYSQL_PASS || 'admin',
+		multipleStatements: true
+	}
+);
 
 module.exports = {
 	query: function(){
