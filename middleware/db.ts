@@ -27,15 +27,15 @@ module.exports = {
 			if(args.length > 2){
 				sql_args = args[1];
 			}
-	    connection.query(args[0], sql_args, function(err, results) {
+	    var query = connection.query(args[0], sql_args, function(err, results) {
 	      connection.release(); // always put connection back in pool after last query
 	      if(err){
 					console.log(err);
 					callback(err);
-					return;
 				}
 	      callback(null, results);
 	    });
+			console.log(query.sql);
 		});
 	},
 	escape: function(arg){
