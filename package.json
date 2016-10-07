@@ -3,6 +3,17 @@
   "version": "1.0.0",
   "description": "a weak app for testing purposes",
   "main": "app.ts",
+  "scripts": {
+    "start": "node dist/app.js",
+    "typings": "node node_modules/typings/dist/bin.js install",
+    "bower": "node node_modules/bower/bin/bower install",
+    "deps": "npm run typings && npm run bower",
+    "tsc": "node node_modules/typescript/bin/tsc && cp -R client/ dist/",
+    "clean": "rm -rf dist/",
+    "hello": "echo hello",
+    "deploy": "npm run clean && npm run deps && npm run build && npm start",
+    "postinstall":"npm run deps"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
@@ -10,6 +21,7 @@
     "mysql": "^2.11.1"
   },
   "devDependencies": {
+    "bower": "^1.7.9",
     "typings": "^1.4.0"
   },
   "scripts": {

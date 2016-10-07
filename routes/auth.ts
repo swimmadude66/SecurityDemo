@@ -35,6 +35,8 @@ authRouter.post('/signup', (req, res, next) => {
         });
       }
     });
+  } else {
+    return res.status(400).send('username and password are required');
   }
 });
 
@@ -49,7 +51,7 @@ authRouter.post('/login', (req, res, next) => {
       }
     });
   } else {
-    return res.stats(400).send('username and password are required');
+    return res.status(400).send('username and password are required');
   }
 });
 

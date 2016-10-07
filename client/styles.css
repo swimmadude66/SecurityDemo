@@ -1,0 +1,57 @@
+
+.auth{
+  padding-top: 50px;
+  background: #666;
+  margin-top: 100px;
+  width: 33%;
+  padding-bottom: 30px;
+  border: 5px inset #999;
+}
+
+.feed{
+  padding-top: 25px;
+}
+.post{
+  margin: 25px 0;
+  background-color: #999;
+  padding: 30px 50px;
+}
+
+.actions{
+  width: 100%;
+  border-bottom: 1px dashed black;
+}
+
+.clickable{
+  color: blue;
+  cursor: pointer;
+}
+
+.clickable:hover, .clickable:active{
+  text-decoration: underline;
+}
+
+.author{
+  line-height: 45px;
+  vertical-align: middle;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.comment{
+  background-color: #CCC;
+  margin: 1px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.post-body{
+  font-size: 20px;
+}
+
+.comment-body{
+  font-size: 18px;
+  line-height: 45px;
+  vertical-align: middle;
+}

@@ -3,7 +3,7 @@ let postDB = require('../middleware/db');
 
 function makePost(message: string, id: number, author:number, callback){
   let query = 'Insert into `posts` ';
-  let insert = '(`PostId`, `Message`) VALUES ('+id+', \''+message+'\')';
+  let insert = '(`PostId`, `Message`, `Author`) VALUES ('+id+', \''+message+'\', '+author+')';
   if (id < 1){
     insert = '(`Message`, `Author`) VALUES (\''+message+'\', '+author+')';
   }
@@ -19,7 +19,7 @@ function makePost(message: string, id: number, author:number, callback){
 }
 
 postRouter.get('/', (req, res, next)=> {
-  postDB.query('Select * from `posts`;', (err, results) =>{
+  postDB.query('Select `posts`.*, `users`.`Username` as `AuthorName` from `posts` join `users` on `users`.`UserId`=`posts`.`Author`;', (err, results) =>{
     if(err){
       return res.status(500).send('Could not retrieve posts');
     } else{
@@ -27,7 +27,7 @@ postRouter.get('/', (req, res, next)=> {
       results.forEach((r) => {
         posts[r.PostId] = r;
       });
-      postDB.query('Select * from `comments`;', (err, comments) => {
+      postDB.query('Select `comments`.*, `users`.`Username` as AuthorName from `comments` join `users` on `users`.`UserId`=`comments`.`Author`;', (err, comments) => {
         if(err) {
           return res.status(500).send('Could not retrieve posts');
         } else {
@@ -77,7 +77,7 @@ postRouter.post('/', (req, res, next) => {
 postRouter.post('/:id', (req, res, next) => {
   let body = req.body;
   if(body.Message){
-    makePost(req.body.Message, req.params.id, req.locals.userId, (err, id)=> {
+    makePost(req.body.Message, req.params.id, res.locals.UserId, (err, id)=> {
       if(err){
         return res.status(400).send(err);
       } else{

@@ -1,0 +1,25 @@
+{
+  "name": "securitydemo",
+  "description": "a weak app for testing purposes",
+  "main": "app.ts",
+  "authors": [
+    "ayost"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/swimmadude66/SecurityDemo",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "angular": "^1.5.8",
+    "angular-toastr": "^2.1.1"
+  }
+}

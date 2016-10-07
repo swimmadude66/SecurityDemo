@@ -9,7 +9,6 @@ function makeComment(message: string, id: number, postId:number, author:number, 
   }
   let collision = ' ON DUPLICATE KEY UPDATE `Message` = VALUES(`Message`);';
   let q = query+insert+collision;
-  console.log(q);
   commentDB.query(q, (err, result)=>{
     if(err){
       return callback(err);
